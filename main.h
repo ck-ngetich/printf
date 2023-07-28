@@ -40,12 +40,10 @@
 /**
 
  * struct fmt - Struct op
-
  *
+ * @fmts: The format.
 
- * @fmt: The format.
-
- * @fn: The function associated.
+ * @fnc: The function associated.
 
  */
 
@@ -53,9 +51,9 @@ struct fmt
 
 {
 
-  char fmt;
+  char fmts;
 
-  int (*fn)(va_list, char[], int, int, int, int);
+  int (*fnc)(va_list, char[], int, int, int, int);
 
 };
 
@@ -69,7 +67,7 @@ struct fmt
 
  *
 
- * @fmt: The format.
+ * @fmts: The format.
 
  * @fm_t: The function associated.
 
@@ -81,7 +79,7 @@ typedef struct fmt fmt_t;
 
 int _printf(const char *format, ...);
 
-int handle_print(const char *fmt, int *i,
+int handle_print(const char *fmts, int *i,
 
 		 va_list list, char buffer[], int flags, int width, int precision, int size);
 
@@ -191,25 +189,25 @@ int handle_write_char(char c, char buffer[],
 
 		      int flags, int width, int precision, int size);
 
-int write_number(int is_positive, int ind, char buffer[],
+int write_number(int is_positive, int indx, char buffer[],
 
 		 int flags, int width, int precision, int size);
 
-int write_num(int ind, char bff[], int flags, int width, int precision,
+int write_num(int indx, char bff[], int flags, int width, int precision,
 
-	      int length, char padd, char extra_c);
+	      int length, char pdn, char extra_ch);
 
-int write_pointer(char buffer[], int ind, int length,
+int write_pointer(char buffer[], int indx, int length,
 
-		  int width, int flags, char padd, char extra_c, int padd_start);
+		  int width, int flags, char pdn, char extra_ch, int padd_start);
 
 
 
-int write_unsgnd(int is_negative, int ind,
+int write_unsgnd(int is_negative, int indx,
 
 		 char buffer[],
 
-		 int flags, int width, int precision, int size);
+		 int flags, int width, int prec, int size);
 
 
 
@@ -226,11 +224,7 @@ int is_digit(char);
 long int convert_size_number(long int num, int size);
 
 long int convert_size_unsgnd(unsigned long int num, int size);
-p
 
-
-
-pp
 
 
 

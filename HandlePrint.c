@@ -27,7 +27,7 @@ fmt_t fmt_types[] = {
 };
 for (i = 0; fmt_types[i].fmts != '\0'; i++)
 if (fmts[*ind] == fmt_types[i].fmts)
-return (fmt_types[i].fn(list, buffer, flags, width, precision, size));
+return (fmt_types[i].fnc(list, buffer, flags, width, precision, size));
 if (fmt_types[i].fmts == '\0')
 {
 if (fmts[*ind] == '\0')
