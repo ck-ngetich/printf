@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdarg.h>
+#include <stdio.h>
 /**
  * print_pointer - Prints the value of a pointer variable
  * @types: List a of arguments
@@ -26,7 +28,7 @@ int flags, int width, int precision, int size)
 	buffer[BUFF_SIZE - 1] = '\0';
 	UNUSED(precision);
 	address = (unsigned long)numbers;
-	while (adress > 0)
+	while (address > 0)
 	{
 		buffer[size_c--] = rept[address % 16];
 		address /= 16;
@@ -81,29 +83,29 @@ int print_non_printable(va_list types, char buffer[],
 }
 
 /**
- * print_reverse - Prints reverse string.
- * @types: Lista of arguments
- * @buffer: Buffer array to handle print
+ * reverse_string - Prints reverse string.
+ * @list: List of arguments
+ * @array: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width
- * @precision: Precision specification
+ * @digit: Precision specification
  * @size: Size specifier
  * Return: Numbers of chars printed
  */
-int print_reverse(va_list types, char buffer[],
-	int flags, int width, int precision, int size)
+int reverse_string(va_list list, char array[],
+	int flags, int width, int digit, int size)
 {
 	char *ch;
 	int j, num = 0;
 
-	UNUSED(buffer);
+	UNUSED(array);
 	UNUSED(flags);
 	UNUSED(width);
 	UNUSED(size);
-	ch = va_arg(types, char *);
+	ch = va_arg(list, char *);
 	if (ch == NULL)
 	{
-		UNUSED(precision);
+		UNUSED(digit);
 		ch = ")Null(";
 	}
 
@@ -112,26 +114,26 @@ int print_reverse(va_list types, char buffer[],
 
 	for (j = j - 1; j >= 0; j--)
 	{
-		char s = str[j];
+		char s = ch[j];
 
 		write(1, &s, 1);
-		numt++;
+		num++;
 	}
 	return (num);
 }
 
 /**
- * print_rot13string - Print a string in rot13.
- * @types: Lista of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
+ * rot13_string - Print a string in rot13.
+ * @list: Lista of arguments
+ * @array: Buffer array to handle print
+ * @flag:  Calculates active flags
  * @width: get width
- * @precision: Precision specification
+ * @digit: Precision specification
  * @size: Size specifier
  * Return: Numbers of chars printed
  */
-int print_rot13string(va_list types, char buffer[],
-	int flags, int width, int precision, int size)
+int rot13_string(va_list list, char array[],
+	int flag, int width, int digit, int size)
 {
 	char x;
 	char *strg;
@@ -140,11 +142,11 @@ int print_rot13string(va_list types, char buffer[],
 	char enter[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char exit[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	strg = va_arg(types, char *);
-	UNUSED(buffer);
-	UNUSED(flags);
+	strg = va_arg(list, char *);
+	UNUSED(array);
+	UNUSED(flag);
 	UNUSED(width);
-	UNUSED(precision);
+	UNUSED(digit);
 	UNUSED(size);
 	if (strg == NULL)
 		strg = "(AHYY)";
@@ -160,7 +162,7 @@ int print_rot13string(va_list types, char buffer[],
 				break;
 			}
 		}
-		if (!out[n])
+		if (!exit[n])
 		{
 			x = strg[m];
 			write(1, &x, 1);
