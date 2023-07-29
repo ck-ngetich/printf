@@ -20,8 +20,8 @@
  */
 struct fmt
 {
-char fmts;
-int (*fnc)(va_list, char[], int, int, int, int);
+  char fmts;
+  int (*fnc)(va_list, char[], int, int, int, int);
 };
 /**
  * typedef struct fmt fmt_t - Struct op
@@ -32,7 +32,7 @@ typedef struct fmt fmt_t;
 int _printf(const char *format, ...);
 int handle_print(const char *fmts, int *i,
 		 va_list list, char buffer[], int flags, int width, int precision, int size);
-int print_character(va_list list, char array[],
+t print_character(va_list list, char array[],
 		  int flags, int width, int precision, int size);
 int print_strg(va_list type, char buffers[],
 	       int flag, int width, int value, int sizes);
