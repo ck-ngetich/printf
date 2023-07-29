@@ -91,7 +91,7 @@ int handle_print(const char *fmts, int *i,
 
 /* printing characters and strings */
 
-int print_charachter(va_list list, char array[],
+int print_character(va_list list, char array[],
 
 	       int flags, int width, int precision, int size);
 
