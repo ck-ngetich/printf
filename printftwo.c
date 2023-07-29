@@ -86,21 +86,21 @@ int print_six(va_list list, char buffer[],
 
 /**
  * print_hexa_caps - Prints an unsigned number in upper hexadecimal notation
- * @types: List of arguments
- * @array: Buffer array to handle print
- * @flag:  Calculates active flags
+ * @list: List of arguments
+ * @buffer: Buffer array to handle print
+ * @flags:  Calculates active flags
  * @width: get width
- * @value: Precision specification
+ * @precision: Precision specification
  * @size: Size specifier
  * Return: Number of chars printed
 
  */
 
-int print_hex_caps(va_list types, char array[],
-	int flag, int width, int value, int size)
+int print_hex_caps(va_list list, char buffer[],
+	int flags, int width, int precision, int size)
 {
-	return (print_hex(types, "0123456789ABCDEF", array,
-		flag, 'X', width, value, size));
+	return (print_hex(list, "0123456789ABCDEF", buffer,
+		flags, 'X', width, precision, size));
 }
 /**
  * print_hex - Prints a hexadecimal number in lower or upper

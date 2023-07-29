@@ -85,27 +85,27 @@ int print_non_printable(va_list types, char buffer[],
 /**
  * reverse_string - Prints reverse string.
  * @list: List of arguments
- * @array: Buffer array to handle print
+ * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width
- * @digit: Precision specification
+ * @precision: Precision specification
  * @size: Size specifier
  * Return: Numbers of chars printed
  */
-int reverse_string(va_list list, char array[],
-	int flags, int width, int digit, int size)
+int reverse_string(va_list list, char buffer[],
+	int flags, int width, int precision, int size)
 {
 	char *ch;
 	int j, num = 0;
 
-	UNUSED(array);
+	UNUSED(buffer);
 	UNUSED(flags);
 	UNUSED(width);
 	UNUSED(size);
 	ch = va_arg(list, char *);
 	if (ch == NULL)
 	{
-		UNUSED(digit);
+		UNUSED(precision);
 		ch = ")Null(";
 	}
 
