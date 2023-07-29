@@ -38,7 +38,6 @@
 
 
 /**
-
  * struct fmt - Struct op
  *
  * @fmts: The format.
@@ -48,13 +47,10 @@
  */
 
 struct fmt
-
 {
 
-  char fmts;
-
-  int (*fnc)(va_list, char[], int, int, int, int);
-
+char fmts;
+int (*fnc)(va_list, char[], int, int, int, int);
 };
 
 
@@ -62,9 +58,7 @@ struct fmt
 
 
 /**
-
  * typedef struct fmt fmt_t - Struct op
-
  *
 
  * @fmts: The format.
@@ -79,7 +73,7 @@ typedef struct fmt fmt_t;
 
 int _printf(const char *format, ...);
 
-int handle_print(const char *fmts, int *i,
+int handle_print(const char *fmts, int *ind,
 
 		 va_list list, char buffer[], int flags, int width, int precision, int size);
 
@@ -127,15 +121,13 @@ int print_six(va_list list, char buffer[],
 
 		      int flags, int width, int digit, int sizes);
 
-int print_hexa_caps(va_list types, char array[],
-
-		     int flag, int width, int value, int size);
+int print_hexa_caps(va_list list, char buffer[], int flags, int width, int precision, int size);
 
 
 
 int print_hex(va_list list, char rep[],
-
-	       char array[], int flag, char flag_character, int width, int value, int sizes);
+	       char array[], int flag, char flag_character, int width,
+	      int value, int sizes);
 
 
 
@@ -169,10 +161,7 @@ int get_size(const char *format, int *i);
 
 /*Function to print string in reverse*/
 
-int print_reverse(va_list types, char buffer[],
-
-		  int flags, int width, int precision, int size);
-
+int print_reverse(va_list list, char buffer[], int flags, int width, int precision, int size);
 
 
 /*Function to print a string in rot 13*/
