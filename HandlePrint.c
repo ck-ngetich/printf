@@ -1,6 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
-
+#include <stdio.h>
 
 /**
  * handle_print - Prints an argument based on its type
@@ -21,9 +21,9 @@ int i, unkn_len = 0, printed_chars = -1;
 fmt_t fmt_types[] = {
 {'c', print_character}, {'s', print_strg}, {'%', percent_sign},
 {'i', print_integer}, {'d', print_integer}, {'b', print_binr},
-{'u', no_sign}, {'o', print_eight}, {'x', print_six},
-{'X', print_hexa_caps}, {'p', print_pointer}, {'S', print_non_printable},
-{'r', print_reverse}, {'R', rot13_string}, {'\0', NULL}
+{'u', no_sign}, {'o', print_eight}, {'x', print_six},{'X', print_hex_caps},
+{'p', print_pointer}, {'S', print_non_printable},
+{'r', reverse_string}, {'R', rot13_string}, {'\0', NULL}
 };
 for (i = 0; fmt_types[i].fmts != '\0'; i++)
 if (fmts[*ind] == fmt_types[i].fmts)

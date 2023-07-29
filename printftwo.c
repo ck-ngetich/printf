@@ -2,6 +2,24 @@
 #include <stdarg.h>
 
 /**
+ * print_hex_caps - Prints an unsigned number in upper hexadecimal notation
+ * @list: List of arguments
+ * @buffer: Buffer array to handle print
+ * @flags:  Calculates active flags
+ * @width: get width
+ * @precision: Precision specification
+ * @size: Size specifier
+ * Return: Number of chars printed
+
+ */
+
+int print_hex_caps(va_list list, char buffer[],
+        int flags, int width, int precision, int size)
+{
+        return (print_hex(list, "0123456789ABCDEF", buffer,
+                flags, 'X', width, precision, size));
+}
+/**
  * no_sign - Prints an unsigned number
  * @list: List a of arguments
  * @array: Buffer array to handle print
@@ -84,24 +102,6 @@ int print_six(va_list list, char buffer[],
 		flags, 'x', width, digit, sizes));
 }
 
-/**
- * print_hexa_caps - Prints an unsigned number in upper hexadecimal notation
- * @list: List of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width
- * @precision: Precision specification
- * @size: Size specifier
- * Return: Number of chars printed
-
- */
-
-int print_hex_caps(va_list list, char buffer[],
-	int flags, int width, int precision, int size)
-{
-	return (print_hex(list, "0123456789ABCDEF", buffer,
-		flags, 'X', width, precision, size));
-}
 /**
  * print_hex - Prints a hexadecimal number in lower or upper
  * list: List of arguments
